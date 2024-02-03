@@ -1,5 +1,35 @@
 [
 build-system
 ]
-requires = ["setuptools", "wheel"]
-build-backend = "setuptools.build_meta"
+requires = ["setuptools", "wheel"] # setuptools and wheel are necessary for the build
+
+[
+project
+]
+name = "ODE-solvers"
+version = "0.1"
+description = "A package to look at solving ODES"
+authors = [
+    {name = "Tom Reed", email = "tcr2@talktalk.net"}
+]
+readme = "README.md"
+license = "GPLv3"
+
+[
+project.urls
+]
+
+[
+project.scripts
+] # Define scripts here if you have any
+
+[
+project.dependencies
+]
+numpy = "*"
+matplotlib = "*"
+scipy = "*"
+
+[
+project.optional-dependencies
+] # Define optional dependencies here if you have any
