@@ -32,7 +32,7 @@ setup(
 
     maintainer='Tom Reed',
 
-    maintainer_email='thomas.reed@wolfson.ox.ac.uk
+    maintainer_email='thomas.reed@wolfson.ox.ac.uk',
 
     url='https://github.com/tomcodewizard/ODE-solvers',
 
