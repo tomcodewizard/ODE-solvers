@@ -1,13 +1,13 @@
 # This workflow will install Python dependencies, run tests and lint with a variety of Python versions
 # For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-python
 
-name: Python v
+name: Python package
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "main", "dev" ]
   pull_request:
-    branches: [ "main" ]
+    branches: [ "main", "dev" ]
   workflow_dispatch:
 
 jobs:
@@ -29,9 +29,6 @@ jobs:
       run: |
         python -m pip install --upgrade pip setuptools wheel
         python -m pip install .[dev]
-    - name: Lint with flake8
+    - name: Run unit tests
       run: |
-        flake8
-    - name: Test with pytest
-      run: |
-        pytest
+        python solver/run_tests.py --unit
