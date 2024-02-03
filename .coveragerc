@@ -3,4 +3,3 @@ source = solver
 omit =
 	*/tests/*
 	*/__init__.py
-	*/version_info.py
