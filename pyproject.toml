@@ -1,14 +1,5 @@
 [build-system]
 requires = ["setuptools", "wheel"] # setuptools and wheel are necessary for the build
 
-[project]
-name = "ODE-solvers"
-version = "0.1"
-description = "A package to look at solving ODES"
-authors = [
-    {name = "Tom Reed", email = "tcr2@talktalk.net"}
-]
-readme = "README.md"
-license = "GPLv3"
 
 
