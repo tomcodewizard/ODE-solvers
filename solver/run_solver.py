@@ -9,7 +9,6 @@ def f(t, y):
     return math.cos(t)
 
 
-
 @record_run_time
 def main():
 

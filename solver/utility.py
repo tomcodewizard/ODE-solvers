@@ -2,11 +2,10 @@ import time
 import logging
 
 
-
 def record_run_time(func):
 
     level = logging.INFO
-    fmt = '[%(levelname)s] - %(message)s'    
+    fmt = '[%(levelname)s] - %(message)s'
     logging.basicConfig(level=level, format=fmt)
 
     def wrapper(*args, **kwargs):

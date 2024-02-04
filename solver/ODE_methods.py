@@ -91,7 +91,6 @@ def rk4(func, y0, t0, t_final, h):
         k3 = func(t + 0.5 * h, y + 0.5 * k2)
         k4 = func(t + h, y + h * k3)
 
-
         y = y + (h / 6) * (k1 + 2 * k2 + 2 * k3 + k4)
         t = t + h
 
