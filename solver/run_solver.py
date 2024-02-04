@@ -1,6 +1,7 @@
 from ODE_methods import forward_euler
 import matplotlib.pyplot as plt
-import math, time
+import math
+
 
 def f(t, y):
 
