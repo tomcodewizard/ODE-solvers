@@ -1,68 +1,61 @@
 
-class ODE_methods:
+def forward_euler(func, y0, t0, tn, h):
+    """Forward Euler method for solving ODEs
 
+    Args:
+        func (func): function equalling dy/dt 
+        y0 (float): initial value of y
+        t0 (float): initial value of t
+        tn (float): current value of t at iteration n
+        h (float): step-size
 
-    def __init__():
+    Returns:
+        list, list: times and y-points
+    """
 
-        ...
+    t_values = [t0]
+    y_values = [y0]
 
-    def forward_euler(func, y0, t0, tn, h):
-        """Forward Euler method for solving ODEs
+    t = t0
+    y = y0
 
-        Args:
-            func (func): function equalling dy/dt 
-            y0 (float): initial value of y
-            t0 (float): initial value of t
-            tn (float): current value of t at iteration n
-            h (float): step-size
+    while t < tn:
 
-        Returns:
-            list, list: times and y-points
-        """
+        y = y + h * func(t, y)
+        t = t + h
 
-        t_values = [t0]
-        y_values = [y0]
+        t_values.append(t)
+        y_values.append(y)
 
-        t = t0
-        y = y0
+    return t_values, y_values
 
-        while t < tn:
+def backward_euler(func, y0, t0, tn, h):
+    """Backward Euler method for solving ODEs
 
-            y = y + h * func(t, y)
-            t = t + h
+    Args:
+        func (func): function equalling dy/dt 
+        y0 (float): initial value of y
+        t0 (float): initial value of t
+        tn (float): current value of t at iteration n
+        h (float): step-size
 
-            t_values.append(t)
-            y_values.append(y)
+    Returns:
+        list, list: times and y-points
+    """
 
-        return t_values, y_values
-    
-    def backward_euler(func, y0, t0, tn, h):
-        """Backward Euler method for solving ODEs
+    t_values = [t0]
+    y_values = [y0]
 
-        Args:
-            func (func): function equalling dy/dt 
-            y0 (float): initial value of y
-            t0 (float): initial value of t
-            tn (float): current value of t at iteration n
-            h (float): step-size
+    t = t0
+    y = y0
 
-        Returns:
-            list, list: times and y-points
-        """
+    while t < tn:
 
-        t_values = [t0]
-        y_values = [y0]
+        y_new = y + h * func(t + h, y_new)
+        t = t + h
 
-        t = t0
-        y = y0
+        t_values.append(t)
+        y_values.append(y_new)
+        y = y_new
 
-        while t < tn:
-            
-            y_new = y + h * func(t + h, y_new)
-            t = t + h
-
-            t_values.append(t)
-            y_values.append(y_new)
-            y = y_new
-
-        return t_values, y_values
+    return t_values, y_values
