@@ -7,9 +7,13 @@
 
 ~Introduce here
 
+~Image to instroduce
+
 ## Using ODE-Solvers
 
 ~Explain how to use example scripts
+
+~Images alongside examples - link to examples used in paper
 
 ## Installing ODE-Solvers
 
