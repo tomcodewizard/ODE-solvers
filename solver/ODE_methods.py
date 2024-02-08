@@ -250,13 +250,26 @@ def adams_moulton_singular(func, y0, t0, t_final, h, *args):
 #############################################
 
 def forward_euler(f, y0, t0, t_final, h, *args):
+    """Function to run the Forward Euler method
 
-    y = [y0]  # Initialize solution array
-    t = [t0]  # Initialize time array
+    Args:
+        f (func): equations to be solved over
+        y0 (float): initial value of y
+        t0 (float): starting time value
+        t_final (float): ending time value
+        h (float): step-size
+
+    Returns:
+        np.array: time values, y-values
+    """
+
+    y = [y0]
+    t = [t0]
 
     while t[-1] < t_final:
-        # Compute next time step using Forward Euler method
+
         y_new = [y[-1][j] + h * f(t[-1], y[-1], *args)[j] for j in range(len(y0))]
+
         y.append(y_new)
         t.append(t[-1] + h)
 
@@ -264,13 +277,26 @@ def forward_euler(f, y0, t0, t_final, h, *args):
 
 
 def backward_euler(f, y0, t0, t_final, h, *args):
+    """Function to run the Backward Euler method
 
-    y = [y0]  # Initialize solution array
-    t = [t0]  # Initialize time array
+    Args:
+        f (func): equations to be solved over
+        y0 (float): initial value of y
+        t0 (float): starting time value
+        t_final (float): ending time value
+        h (float): step-size
+
+    Returns:
+        np.array: time values, y-values
+    """
+
+    y = [y0]
+    t = [t0]
 
     while t[-1] < t_final:
-        # Use fsolve to solve the nonlinear equation for the next time step
+
         y_new = fsolve(lambda y_new: y[-1] + h * np.array(f(t[-1] + h, y_new, *args)) - np.array(y_new), y[-1])
+
         y.append(y_new)
         t.append(t[-1] + h)
 
@@ -278,15 +304,27 @@ def backward_euler(f, y0, t0, t_final, h, *args):
 
 
 def midpoint_method(f, y0, t0, t_final, h, *args):
+    """Function to run the Midpoint method
 
-    y = [y0]  # Initialize solution array
-    t = [t0]  # Initialize time array
+    Args:
+        f (func): equations to be solved over
+        y0 (float): initial value of y
+        t0 (float): starting time value
+        t_final (float): ending time value
+        h (float): step-size
+
+    Returns:
+        np.array: time values, y-values
+    """
+
+    y = [y0]
+    t = [t0]
 
     while t[-1] < t_final:
-        # Calculate the midpoint
+
         y_mid = np.array(y[-1]) + 0.5 * h * np.array(f(t[-1], y[-1], *args))
-        # Update the solution using the midpoint approximation
         y_new = np.array(y[-1]) + h * np.array(f(t[-1] + 0.5 * h, y_mid, *args))
+
         y.append(list(y_new))
         t.append(t[-1] + h)
 
@@ -294,15 +332,27 @@ def midpoint_method(f, y0, t0, t_final, h, *args):
 
 
 def heuns_method(f, y0, t0, t_final, h, *args):
+    """Function to run the Heuns method
 
-    y = [y0]  # Initialize solution array
-    t = [t0]  # Initialize time array
+    Args:
+        f (func): equations to be solved over
+        y0 (float): initial value of y
+        t0 (float): starting time value
+        t_final (float): ending time value
+        h (float): step-size
+
+    Returns:
+        np.array: time values, y-values
+    """
+
+    y = [y0]
+    t = [t0]
 
     while t[-1] < t_final:
-        # Predictor step
+
         y_pred = np.array(y[-1]) + h * np.array(f(t[-1], y[-1], *args))
-        # Corrector step
         y_new = np.array(y[-1]) + 0.5 * h * (np.array(f(t[-1], y[-1], *args)) + np.array(f(t[-1] + h, y_pred, *args)))
+
         y.append(list(y_new))
         t.append(t[-1] + h)
 
@@ -310,17 +360,31 @@ def heuns_method(f, y0, t0, t_final, h, *args):
 
 
 def runge_kutta4(f, y0, t0, t_final, h, *args):
+    """Function to run the Runge Kutta RK4 method
 
-    y = [y0]  # Initialize solution array
-    t = [t0]  # Initialize time array
+    Args:
+        f (func): equations to be solved over
+        y0 (float): initial value of y
+        t0 (float): starting time value
+        t_final (float): ending time value
+        h (float): step-size
+
+    Returns:
+        np.array: time values, y-values
+    """
+
+    y = [y0]
+    t = [t0]
 
     while t[-1] < t_final:
+
         k1 = h * np.array(f(t[-1], y[-1], *args))
         k2 = h * np.array(f(t[-1] + 0.5 * h, np.array(y[-1]) + 0.5 * k1, *args))
         k3 = h * np.array(f(t[-1] + 0.5 * h, np.array(y[-1]) + 0.5 * k2, *args))
         k4 = h * np.array(f(t[-1] + h, np.array(y[-1]) + k3, *args))
 
-        y_new = np.array(y[-1]) + (k1 + 2*k2 + 2*k3 + k4) / 6.0
+        y_new = np.array(y[-1]) + (1 / 6.0) * (k1 + 2*k2 + 2*k3 + k4)
+
         y.append(list(y_new))
         t.append(t[-1] + h)
 
@@ -328,30 +392,52 @@ def runge_kutta4(f, y0, t0, t_final, h, *args):
 
 
 def adams_bashforth(f, y0, t0, t_final, h, *args):
+    """Function to run the Adams-Bashforth method
 
-    y = [y0]  # Initialize solution array
-    t = [t0]  # Initialize time array
+    Args:
+        f (func): equations to be solved over
+        y0 (float): initial value of y
+        t0 (float): starting time value
+        t_final (float): ending time value
+        h (float): step-size
+
+    Returns:
+        np.array: time values, y-values
+    """
+
+    y = [y0]
+    t = [t0]
 
     while t[-1] < t_final:
-        # Predictor step
+
         y_pred = np.array(y[-1]) + 0.5 * h * np.array(f(t[-1], y[-1], *args))
-        # Corrector step
         y_new = np.array(y[-1]) + 0.5 * h * (3 * np.array(f(t[-1] + h, y_pred, *args)) - np.array(f(t[-1], y[-1], *args)))
+        
         y.append(list(y_new))
         t.append(t[-1] + h)
 
     return np.array(t), np.array(y)
 
 def adams_moulton(f, y0, t0, t_final, h, *args):
+    """Function to run the Adams-Moulton method
 
-    y = [y0]  # Initialize solution array
-    t = [t0]  # Initialize time array
+    Args:
+        f (func): equations to be solved over
+        y0 (float): initial value of y
+        t0 (float): starting time value
+        t_final (float): ending time value
+        h (float): step-size
+
+    Returns:
+        np.array: time values, y-values
+    """
+
+    y = [y0]
+    t = [t0]
 
     while t[-1] < t_final:
-        # Predictor using the backward Euler method
-        y_pred = [y[-1][j] + h * f(t[-1], y[-1], *args)[j] for j in range(len(y0))]
 
-        # Corrector using the Adams-Moulton formula
+        y_pred = [y[-1][j] + h * f(t[-1], y[-1], *args)[j] for j in range(len(y0))]
         y_new = [y[-1][j] + h * (f(t[-1] + h, y_pred, *args)[j] + f(t[-1], y[-1], *args)[j]) / 2 for j in range(len(y0))]
 
         y.append(y_new)

@@ -67,25 +67,35 @@ def plot_SIR(method, t_values, y_approx):
     plt.show()
 
 
-if __name__ == "__main__":
+def main(parameters, methods, plot=False):
+    """Method to run ODE solvers
 
-    methods = [forward_euler, backward_euler, midpoint_method, heuns_method, runge_kutta4, adams_bashforth, adams_moulton]
+    Args:
+        parameters (dict): dictionary of parameter values
+        methods (array): array of ODE solver methods
+        plot (bool): boolean to dictate whether to plot the models
+    """
+
+    print(f'Parameters: {parameters}')
 
     for m in methods:
 
-            # Initial conditions and parameters
-        S0 = 990
-        I0 = 10
-        R0 = 0
-        beta = 0.3
-        gamma = 0.1
+        S0, I0, R0, beta, gamma, t0, t_final, h = parameters.values()
         y0 = [S0, I0, R0]
-        t0 = 0
-        t_final = 200
-        h = 0.1
 
         print(m.__name__)
-        # Solve the SIR modeld
+
         t_values, y_approx = run_ODE_solver(m, SIR_equations, y0, t0, t_final, h, beta, gamma)
 
-        plot_SIR(m, t_values, y_approx)
+        if plot == True:
+
+            plot_SIR(m, t_values, y_approx)
+
+
+methods = [forward_euler, backward_euler, midpoint_method, heuns_method, runge_kutta4, adams_bashforth, adams_moulton]
+
+ex1_parameters = {'S0': 990, 'I0':10, 'R0': 0, 'beta': 0.3, 'gamma': 0.1, 't0': 0, 't_final': 200, 'h': 0.1}
+
+if __name__ == "__main__":
+
+    main(ex1_parameters, methods, plot=False)
