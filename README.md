@@ -8,12 +8,10 @@
 ~Introduce here
 
 
-<img src="images/forwardeuler_SIR_graph.png" width="600" height="400">
+<img src="images/forwardeuler_SIR_graph.png" width="500" height="400">
 
 
 ## Using ODE-Solvers
-
-[imageSIR](images/forwardeuler_SIR_graph.png)
 
 ~Explain how to use example scripts
 
