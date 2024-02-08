@@ -4,9 +4,15 @@ from functools import wraps
 
 
 def record_runtime(func):
+    """Decorator to record run-time of functions
+
+    Args:
+        func (func): function to be timed
+
+    Returns:
+        functools.wraps: wrapper
     """
-    Decorator function to record the runtime of a function.
-    """
+
     @wraps(func)
     def wrapper(*args, **kwargs):
         start_time = time.perf_counter()  # Record start time
