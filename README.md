@@ -7,7 +7,9 @@
 
 ~Introduce here
 
-~Image to instroduce
+
+<img src="images/forwardeuler_SIR_graph.png" width="600" height="400">
+
 
 ## Using ODE-Solvers
 
