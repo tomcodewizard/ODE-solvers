@@ -122,7 +122,7 @@ def heuns_method_singular(func, y0, t0, t_final, h):
         y_predictor = y + h * slope_initial
 
         slope_corrector = func(t + h, y_predictor)
-        y = y + h/2 * (slope_initial + slope_corrector)
+        y = y + (h / 2) * (slope_initial + slope_corrector)
 
         t = t + h
         t_values.append(t)
@@ -383,7 +383,7 @@ def runge_kutta4(f, y0, t0, t_final, h, *args):
         k3 = h * np.array(f(t[-1] + 0.5 * h, np.array(y[-1]) + 0.5 * k2, *args))
         k4 = h * np.array(f(t[-1] + h, np.array(y[-1]) + k3, *args))
 
-        y_new = np.array(y[-1]) + (1 / 6.0) * (k1 + 2*k2 + 2*k3 + k4)
+        y_new = np.array(y[-1]) + (1 / 6.0) * (k1 + 2 * k2 + 2 * k3 + k4)
 
         y.append(list(y_new))
         t.append(t[-1] + h)
@@ -411,12 +411,14 @@ def adams_bashforth(f, y0, t0, t_final, h, *args):
     while t[-1] < t_final:
 
         y_pred = np.array(y[-1]) + 0.5 * h * np.array(f(t[-1], y[-1], *args))
-        y_new = np.array(y[-1]) + 0.5 * h * (3 * np.array(f(t[-1] + h, y_pred, *args)) - np.array(f(t[-1], y[-1], *args)))
-        
+        y_new = np.array(y[-1]) + 0.5 * h * (3 * np.array(f(t[-1] + h, y_pred, *args)) 
+                                             - np.array(f(t[-1], y[-1], *args)))
+
         y.append(list(y_new))
         t.append(t[-1] + h)
 
     return np.array(t), np.array(y)
+
 
 def adams_moulton(f, y0, t0, t_final, h, *args):
     """Function to run the Adams-Moulton method
@@ -438,7 +440,8 @@ def adams_moulton(f, y0, t0, t_final, h, *args):
     while t[-1] < t_final:
 
         y_pred = [y[-1][j] + h * f(t[-1], y[-1], *args)[j] for j in range(len(y0))]
-        y_new = [y[-1][j] + h * (f(t[-1] + h, y_pred, *args)[j] + f(t[-1], y[-1], *args)[j]) / 2 for j in range(len(y0))]
+        y_new = [y[-1][j] + h * (f(t[-1] + h, y_pred, *args)[j] + f(t[-1], y[-1], *args)[j]) / 2 
+                 for j in range(len(y0))]
 
         y.append(y_new)
         t.append(t[-1] + h)

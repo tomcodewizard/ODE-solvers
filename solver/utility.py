@@ -1,5 +1,4 @@
 import time
-import logging
 from functools import wraps
 
 
@@ -24,5 +23,5 @@ def record_runtime(func):
         print(f"Runtime: {runtime:.6f} seconds")
 
         return result
-    
+
     return wrapper
