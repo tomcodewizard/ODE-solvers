@@ -67,7 +67,7 @@ def plot_SIR(method, t_values, y_approx):
     plt.show()
 
 
-def main(parameters, methods, plot=False):
+def run_solvers(parameters, methods, plot=False):
     """Method to run ODE solvers
 
     Args:
@@ -94,8 +94,14 @@ def main(parameters, methods, plot=False):
 
 methods = [forward_euler, backward_euler, midpoint_method, heuns_method, runge_kutta4, adams_bashforth, adams_moulton]
 
-ex1_parameters = {'S0': 990, 'I0':10, 'R0': 0, 'beta': 0.3, 'gamma': 0.1, 't0': 0, 't_final': 200, 'h': 0.1}
+ex1_parameters = {'S0': 990, 'I0':10, 'R0': 0, 'beta': 0.2, 'gamma': 0.1, 't0': 0, 't_final': 200, 'h': 0.1}
+#ex2_parameters = {'S0': 990, 'I0':10, 'R0': 0, 'beta': 0.6, 'gamma': 0.1, 't0': 0, 't_final': 200, 'h': 0.1}
+#ex3_parameters = {'S0': 990, 'I0':10, 'R0': 0, 'beta': 0.9, 'gamma': 0.1, 't0': 0, 't_final': 200, 'h': 0.1}
+
+params = [ex1_parameters] #, ex2_parameters, ex3_parameters]
 
 if __name__ == "__main__":
 
-    main(ex1_parameters, methods, plot=False)
+    for p in params:
+
+        run_solvers(p, methods, plot=False)
