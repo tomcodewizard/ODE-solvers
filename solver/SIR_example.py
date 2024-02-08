@@ -95,10 +95,10 @@ def run_solvers(parameters, methods, plot=False):
 methods = [forward_euler, backward_euler, midpoint_method, heuns_method, runge_kutta4, adams_bashforth, adams_moulton]
 
 ex1_parameters = {'S0': 990, 'I0':10, 'R0': 0, 'beta': 0.2, 'gamma': 0.1, 't0': 0, 't_final': 200, 'h': 0.1}
-#ex2_parameters = {'S0': 990, 'I0':10, 'R0': 0, 'beta': 0.6, 'gamma': 0.1, 't0': 0, 't_final': 200, 'h': 0.1}
-#ex3_parameters = {'S0': 990, 'I0':10, 'R0': 0, 'beta': 0.9, 'gamma': 0.1, 't0': 0, 't_final': 200, 'h': 0.1}
+ex2_parameters = {'S0': 990, 'I0':10, 'R0': 0, 'beta': 0.5, 'gamma': 0.1, 't0': 0, 't_final': 200, 'h': 0.1}
+ex3_parameters = {'S0': 990, 'I0':10, 'R0': 0, 'beta': 0.8, 'gamma': 0.1, 't0': 0, 't_final': 200, 'h': 0.1}
 
-params = [ex1_parameters] #, ex2_parameters, ex3_parameters]
+params = [ex1_parameters, ex2_parameters, ex3_parameters]
 
 if __name__ == "__main__":
 
