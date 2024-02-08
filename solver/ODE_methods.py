@@ -411,7 +411,7 @@ def adams_bashforth(f, y0, t0, t_final, h, *args):
     while t[-1] < t_final:
 
         y_pred = np.array(y[-1]) + 0.5 * h * np.array(f(t[-1], y[-1], *args))
-        y_new = np.array(y[-1]) + 0.5 * h * (3 * np.array(f(t[-1] + h, y_pred, *args)) 
+        y_new = np.array(y[-1]) + 0.5 * h * (3 * np.array(f(t[-1] + h, y_pred, *args))
                                              - np.array(f(t[-1], y[-1], *args)))
 
         y.append(list(y_new))
@@ -440,7 +440,7 @@ def adams_moulton(f, y0, t0, t_final, h, *args):
     while t[-1] < t_final:
 
         y_pred = [y[-1][j] + h * f(t[-1], y[-1], *args)[j] for j in range(len(y0))]
-        y_new = [y[-1][j] + h * (f(t[-1] + h, y_pred, *args)[j] + f(t[-1], y[-1], *args)[j]) / 2 
+        y_new = [y[-1][j] + h * (f(t[-1] + h, y_pred, *args)[j] + f(t[-1], y[-1], *args)[j]) / 2
                  for j in range(len(y0))]
 
         y.append(y_new)
