@@ -13,6 +13,8 @@
 
 ## Using ODE-Solvers
 
+[imageSIR](images/forwardeuler_SIR_graph.png)
+
 ~Explain how to use example scripts
 
 ~Images alongside examples - link to examples used in paper
