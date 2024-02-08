@@ -5,17 +5,29 @@
 
 # ODE Solvers
 
-~Introduce here
+*ODE Solvers* is a python package that contains a number of numerical solver functions for Ordinary Differential Equations (ODEs). 
 
+This package was made as part of the *Modelling and Scientific Computing* module. 
+
+This package was used in a report write-up to compare different ODE methods when solving a SIR model. 
+
+Example output of a SIR plot is given below: 
 
 <img src="images/forwardeuler_SIR_graph.png" width="500" height="400">
 
+## Numerical Methods
 
-## Using ODE-Solvers
+*ODE Solvers* contains a number of methods in `solver\ODE_methods.py`
 
-~Explain how to use example scripts
+These include:
 
-~Images alongside examples - link to examples used in paper
+- Forward Euler
+- Backward Euler
+- Midpoint Method
+- Heun's Method
+- Runge Kutta RK4
+- Adams-Bashforth
+- Adams-Moulton
 
 ## Installing ODE-Solvers
 
@@ -28,5 +40,5 @@ $ pip install -e .[dev,docs]
 
 To uninstall, type:
 ```
-$ pip uninstall ODE-solvers
+$ pip uninstall solver
 ```
