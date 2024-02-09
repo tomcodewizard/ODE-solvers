@@ -101,7 +101,6 @@ ex2_parameters = {'S0': 990, 'I0': 10, 'R0': 0, 'beta': 0.5, 'gamma': 0.1, 't0':
 ex3_parameters = {'S0': 990, 'I0': 10, 'R0': 0, 'beta': 0.8, 'gamma': 0.1, 't0': 0, 't_final': 200, 'h': 0.1}
 
 params = [ex1_parameters, ex2_parameters, ex3_parameters]
-params = [ex2_parameters]
 
 if __name__ == "__main__":
 
